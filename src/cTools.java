@@ -33,19 +33,9 @@ public class cTools {
 
     //limites de movimiento
     public void move() {
+
                 POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 2;
     }
-
-    /*
-    //pintamos la rauqeta
-    public void paint(Graphics2D g) {
-        g.drawImage(martillo, POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
-        g.drawImage(destornillador, POSICION_ANCHURA_X + 130, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
-        g.drawImage(llaveInglesa, POSICION_ANCHURA_X + 260, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
-        g.drawImage(escudo, POSICION_ANCHURA_X + 390, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
-        g.drawImage(vidaExtra, POSICION_ANCHURA_X + 510, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
-    }
-    */
 
     //sin pulsar teclas
     public void keyReleased(KeyEvent e) {
@@ -57,9 +47,9 @@ public class cTools {
     public void keyPressed(KeyEvent e) {
         //MOVIMIENTO HORIZONTAL
         if (e.getKeyCode() == KeyEvent.VK_LEFT)
-            xa = -5;
+            xa = -50;
         if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-            xa = 5;
+            xa = 50;
         //MOVIMIENTO VERTICAL
 /*
         if (e.getKeyCode() == KeyEvent.VK_UP)

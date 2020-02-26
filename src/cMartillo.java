@@ -17,4 +17,9 @@ public class cMartillo extends cTools{
     public void paint(Graphics2D g) {
         g.drawImage(martillo, POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
     }
+
+    public void move() {
+
+        POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 50;
+    }
 }

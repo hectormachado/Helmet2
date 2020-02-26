@@ -27,6 +27,7 @@ public class cPlayer {
 
     //limites de movimiento
     public void move() {
+
         if ((POSICION_ANCHURA_X + xa >= 0)&&(POSICION_ANCHURA_X + xa < game.getWidth() - SPRITE_ANCHURA))
             POSICION_ANCHURA_X = POSICION_ANCHURA_X + xa;
         /*
