@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -10,19 +11,20 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Game extends JPanel {
 
-    private Image backgroundImage = ImageIO.read(new File("images/fondo.jpg"));;
+    BufferedImage backgroundImage = ImageIO.read(new File("images/fondo.jpg"));
+
     private static int ANCHURA = 1000;
     private static int ALTURA = 800;
 
     cPlayer cPlayer = new cPlayer(this);
     cTools cTools = new cTools(this);
+    cMartillo cMartillo = new cMartillo(this);
 
     public static void main(String[] args) throws InterruptedException, IOException {
         JFrame frame = new JFrame("HELMET GAME");
         Game game = new Game();
         frame.add(game);
         frame.setSize(ANCHURA, ALTURA);
-
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -55,12 +57,12 @@ public class Game extends JPanel {
     private void move() {
 
             try {
-                Thread.sleep(10);
+                Thread.sleep(100);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        cTools.move();
+        cMartillo.move();
         cPlayer.move();
     }
 
@@ -72,8 +74,8 @@ public class Game extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         cPlayer.paint(g2d);
-        cTools.paint(g2d);
-
+        //cTools.paint(g2d);
+        cMartillo.paint(g2d);
     }
 
 
