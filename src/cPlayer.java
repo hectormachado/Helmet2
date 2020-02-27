@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class cPlayer {
+public class cPlayer implements Runnable {
 
     // load source images
     BufferedImage image = ImageIO.read(new File("images/player4.png"));
@@ -38,7 +38,7 @@ public class cPlayer {
 
     //pintamos la rauqeta
     public void paint(Graphics2D g) {
-        g.drawImage(image, POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
+        game.g2d.drawImage(image, POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
     }
 
     //sin pulsar teclas
@@ -71,4 +71,13 @@ public class cPlayer {
         return POSICION_ALTURA_Y - SPRITE_ALTURA;
     }
 
+    @Override
+    public void run() {
+        while(true)
+        {
+            move();
+            paint(game.g2d);
+
+        }
+    }
 }

@@ -13,26 +13,43 @@ public class Game extends JPanel {
 
     BufferedImage backgroundImage = ImageIO.read(new File("images/fondo.jpg"));
 
+    static JFrame frame;
     private static int ANCHURA = 1000;
     private static int ALTURA = 800;
 
+    Graphics2D g2d;
+
     cPlayer cPlayer = new cPlayer(this);
-    cTools cTools = new cTools(this);
     cMartillo cMartillo = new cMartillo(this);
+    cDestornillador cDestornillador = new cDestornillador(this);
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        JFrame frame = new JFrame("HELMET GAME");
+        frame = new JFrame("HELMET GAME");
         Game game = new Game();
+        game.principal(game);
+
+
+    }
+    public void principal(Game game)
+    {
         frame.add(game);
         frame.setSize(ANCHURA, ALTURA);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        /*
+        Thread p = new Thread(cPlayer);
+        p.start();
+        */
         while (true){
             game.move();
             game.repaint();
-        }
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
+        }
     }
 
     public Game() throws IOException {
@@ -56,28 +73,27 @@ public class Game extends JPanel {
 
     private void move() {
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        cPlayer.move();
 
         cMartillo.move();
-        cPlayer.move();
+        cDestornillador.move();
     }
 
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
+        g2d = (Graphics2D) g;
         g.drawImage(backgroundImage,0, 0, this.getWidth(), this.getHeight(), null);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
+
         cPlayer.paint(g2d);
-        //cTools.paint(g2d);
+
         cMartillo.paint(g2d);
+        cDestornillador.paint(g2d);
     }
+
 
 
 }

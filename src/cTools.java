@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class cTools {
+abstract class cTools {
 
     /*
     // load source images
@@ -19,8 +19,8 @@ public class cTools {
 
     static int SPRITE_ALTURA = 100;
     static int SPRITE_ANCHURA = 100;
-    static int POSICION_ALTURA_Y = 0;
-    static int POSICION_ANCHURA_X = 130;
+    static int POSICION_ALTURA_Y;
+    static int POSICION_ANCHURA_X;
 
     int ya = 0;
     int xa = 0;
@@ -34,7 +34,11 @@ public class cTools {
     //limites de movimiento
     public void move() {
 
-                POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 2;
+                if(POSICION_ALTURA_Y >= 500){
+                    POSICION_ALTURA_Y = 0;
+                }else{
+                    POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 2;
+                }
     }
 
     //sin pulsar teclas

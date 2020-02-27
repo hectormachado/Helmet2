@@ -6,6 +6,9 @@ import java.io.IOException;
 
 public class cMartillo extends cTools{
 
+    static int POSICION_ALTURA_Y = 0;
+    static int POSICION_ANCHURA_X = 130;
+
     // load source images
     BufferedImage martillo = ImageIO.read(new File("images/martillo.png"));
 
@@ -20,6 +23,10 @@ public class cMartillo extends cTools{
 
     public void move() {
 
-        POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 50;
+        if(POSICION_ALTURA_Y >= 500){
+            POSICION_ALTURA_Y = 0;
+        }else{
+            POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 50;
+        }
     }
 }
