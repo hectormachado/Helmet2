@@ -19,9 +19,14 @@ public class Game extends JPanel {
 
     Graphics2D g2d;
 
+    //**-- INSTANCIAMOS AL PLAYER Y LAS HERRAMIENTAS --**//
     cPlayer cPlayer = new cPlayer(this);
+
     cMartillo cMartillo = new cMartillo(this);
     cDestornillador cDestornillador = new cDestornillador(this);
+    cLlaveInglesa cLlaveInglesa = new cLlaveInglesa(this);
+    cVidaExtra cVidaExtra = new cVidaExtra(this);
+    cEscudo cEscudo = new cEscudo(this);
 
     public static void main(String[] args) throws InterruptedException, IOException {
         frame = new JFrame("HELMET GAME");
@@ -77,6 +82,9 @@ public class Game extends JPanel {
 
         cMartillo.move();
         cDestornillador.move();
+        cLlaveInglesa.move();
+        cVidaExtra.move();
+        cEscudo.move();
     }
 
 
@@ -92,6 +100,9 @@ public class Game extends JPanel {
 
         cMartillo.paint(g2d);
         cDestornillador.paint(g2d);
+        cLlaveInglesa.paint(g2d);
+        cVidaExtra.paint(g2d);
+        cEscudo.paint(g2d);
     }
 
 
