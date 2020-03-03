@@ -19,8 +19,8 @@ abstract class cTools {
 
     static int SPRITE_ALTURA = 100;
     static int SPRITE_ANCHURA = 100;
-    static int POSICION_ALTURA_Y;
-    static int POSICION_ANCHURA_X;
+    int POSICION_ALTURA_Y;
+    int POSICION_ANCHURA_X;
 
     int ya = 0;
     int xa = 0;
@@ -31,16 +31,30 @@ abstract class cTools {
         this.game = game;
     }
 
-    //limites de movimiento
-    public void move() {
+    public  void move() {
 
-                if(POSICION_ALTURA_Y >= 500){
-                    POSICION_ALTURA_Y = 0;
-                }else{
-                    POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 2;
-                }
+        int numRandom = (int) (Math.random()*9+0);
+
+        if(POSICION_ALTURA_Y >= 500){
+
+            switch (numRandom){
+
+                case 0: POSICION_ALTURA_Y = -100; break;
+                case 1: POSICION_ALTURA_Y = -200; break;
+                case 2: POSICION_ALTURA_Y = -300; break;
+                case 3: POSICION_ALTURA_Y = -400; break;
+                case 4: POSICION_ALTURA_Y = -500; break;
+                case 5: POSICION_ALTURA_Y = -600; break;
+                case 6: POSICION_ALTURA_Y = -700; break;
+                case 7: POSICION_ALTURA_Y = -800; break;
+                case 8: POSICION_ALTURA_Y = -900; break;
+                case 9: POSICION_ALTURA_Y = -1000; break;
+
+            }
+        }else{
+            POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 50;
+        }
     }
-
     //sin pulsar teclas
     public void keyReleased(KeyEvent e) {
         xa = 0;

@@ -5,12 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel {
+public class Game extends JPanel{
 
+
+    public static int Puntos = 0;
     BufferedImage backgroundImage = ImageIO.read(new File("images/fondo.jpg"));
 
     static JFrame frame;
@@ -21,6 +22,7 @@ public class Game extends JPanel {
 
     //**-- INSTANCIAMOS AL PLAYER Y LAS HERRAMIENTAS --**//
     cPlayer cPlayer = new cPlayer(this);
+    cPuerta cPuerta = new cPuerta(this);
 
     cMartillo cMartillo = new cMartillo(this);
     cDestornillador cDestornillador = new cDestornillador(this);
@@ -33,18 +35,13 @@ public class Game extends JPanel {
         Game game = new Game();
         game.principal(game);
 
-
     }
-    public void principal(Game game)
-    {
+    public void principal(Game game){
         frame.add(game);
         frame.setSize(ANCHURA, ALTURA);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*
-        Thread p = new Thread(cPlayer);
-        p.start();
-        */
+
         while (true){
             game.move();
             game.repaint();
@@ -55,6 +52,7 @@ public class Game extends JPanel {
             }
 
         }
+
     }
 
     public Game() throws IOException {
@@ -85,6 +83,7 @@ public class Game extends JPanel {
         cLlaveInglesa.move();
         cVidaExtra.move();
         cEscudo.move();
+
     }
 
 
@@ -96,6 +95,8 @@ public class Game extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
+        g2d.drawString("Puntos: "+ Puntos, 100, 20);
+
         cPlayer.paint(g2d);
 
         cMartillo.paint(g2d);
@@ -103,8 +104,7 @@ public class Game extends JPanel {
         cLlaveInglesa.paint(g2d);
         cVidaExtra.paint(g2d);
         cEscudo.paint(g2d);
+
+        cPuerta.avisoPuertaAbrierta(g2d);
     }
-
-
-
 }

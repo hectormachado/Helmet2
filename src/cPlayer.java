@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -8,7 +9,8 @@ import java.io.IOException;
 public class cPlayer implements Runnable {
 
     // load source images
-    BufferedImage image = ImageIO.read(new File("images/player4.png"));
+   //BufferedImage images = ImageIO.read(new File("images/player.png")); //Imagen PNG
+   Image image = new ImageIcon(String.valueOf(new File("images/player1.gif"))).getImage(); //Imagen GIF
 
 
     static int SPRITE_ALTURA = 100;
@@ -28,12 +30,19 @@ public class cPlayer implements Runnable {
     //limites de movimiento
     public void move() {
 
-        if ((POSICION_ANCHURA_X + xa >= 0)&&(POSICION_ANCHURA_X + xa < game.getWidth() - SPRITE_ANCHURA))
+        if((POSICION_ANCHURA_X == 780)&&(cPuerta.abierta)){ //PUERTA ABIERTA
+
+            Game.Puntos = Game.Puntos + 100;
+            POSICION_ANCHURA_X = 0;
+
+        }else if ((POSICION_ANCHURA_X == 650)&&(!cPuerta.abierta)){ //PUERTA CERRADA
+
+
+
+        }else if((POSICION_ANCHURA_X + xa >= 0)&&(POSICION_ANCHURA_X + xa < game.getWidth() - SPRITE_ANCHURA)) { // MOVIMIENTO
+
             POSICION_ANCHURA_X = POSICION_ANCHURA_X + xa;
-        /*
-        if ((POSICION_ALTURA_Y + ya > 0)&&(POSICION_ALTURA_Y + ya < game.getWidth() - SPRITE_ALTURA))
-            POSICION_ALTURA_Y = POSICION_ALTURA_Y + ya;
-         */
+        }
     }
 
     //pintamos la rauqeta
