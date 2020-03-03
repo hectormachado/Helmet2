@@ -11,7 +11,7 @@ public class cLlaveInglesa extends cTools{
 
     public cLlaveInglesa(Game game) throws IOException {
         super(game);
-        POSICION_ANCHURA_X = 390;
+        ColumnaRandom();
     }
 
     //pintamos la rauqeta

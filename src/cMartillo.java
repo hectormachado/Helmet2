@@ -12,7 +12,7 @@ public class cMartillo extends cTools{
 
     public cMartillo(Game game) throws IOException {
         super(game);
-        POSICION_ANCHURA_X = 130;
+        ColumnaRandom();
     }
 
     //pintamos la rauqeta

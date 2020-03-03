@@ -11,7 +11,7 @@ public class cEscudo extends cTools{
 
     public cEscudo(Game game) throws IOException {
         super(game);
-        POSICION_ANCHURA_X = 650;
+        ColumnaRandom();
     }
 
     //pintamos la rauqeta

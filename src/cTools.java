@@ -4,8 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 abstract class cTools {
+    int VELOCIDAD = 50;
 
     /*
     // load source images
@@ -31,6 +34,38 @@ abstract class cTools {
         this.game = game;
     }
 
+    public void ColumnaRandom(){
+
+        int ColumnRandom = (int) (Math.random()*4+0);
+
+        int[] listaNumeros = new int[4];
+
+        switch (ColumnRandom) {
+
+            case 0:
+                POSICION_ANCHURA_X = 130;
+                listaNumeros[0]=0;
+                break;
+            case 1:
+                POSICION_ANCHURA_X = 260;
+                listaNumeros[1]=1;
+                break;
+            case 2:
+                POSICION_ANCHURA_X = 390;
+                listaNumeros[2]=2;
+                break;
+            case 3:
+                POSICION_ANCHURA_X = 520;
+                listaNumeros[3]=3;
+                break;
+            case 4:
+                POSICION_ANCHURA_X = 650;
+                listaNumeros[4]=4;
+                break;
+        }
+
+    }
+
     public  void move() {
 
         int numRandom = (int) (Math.random()*9+0);
@@ -51,10 +86,11 @@ abstract class cTools {
                 case 9: POSICION_ALTURA_Y = -1000; break;
 
             }
-        }else{
-            POSICION_ALTURA_Y = POSICION_ALTURA_Y  + 50;
+        }else {
+                    POSICION_ALTURA_Y = POSICION_ALTURA_Y + VELOCIDAD;
+
+            }
         }
-    }
     //sin pulsar teclas
     public void keyReleased(KeyEvent e) {
         xa = 0;

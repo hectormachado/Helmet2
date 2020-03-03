@@ -32,7 +32,7 @@ public class cPlayer implements Runnable {
 
         if((POSICION_ANCHURA_X == 780)&&(cPuerta.abierta)){ //PUERTA ABIERTA
 
-            Game.Puntos = Game.Puntos + 100;
+            Game.Puntos = Game.Puntos + 50;
             POSICION_ANCHURA_X = 0;
 
         }else if ((POSICION_ANCHURA_X == 650)&&(!cPuerta.abierta)){ //PUERTA CERRADA

@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -29,6 +30,8 @@ public class Game extends JPanel{
     cLlaveInglesa cLlaveInglesa = new cLlaveInglesa(this);
     cVidaExtra cVidaExtra = new cVidaExtra(this);
     cEscudo cEscudo = new cEscudo(this);
+
+
 
     public static void main(String[] args) throws InterruptedException, IOException {
         frame = new JFrame("HELMET GAME");
