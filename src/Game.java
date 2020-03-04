@@ -39,7 +39,7 @@ public class Game extends JPanel{
         game.principal(game);
 
     }
-    public void principal(Game game) throws InterruptedException {
+    public void principal(Game game){
         frame.add(game);
         frame.setSize(ANCHURA, ALTURA);
         frame.setVisible(true);
@@ -47,7 +47,11 @@ public class Game extends JPanel{
 
         while (true){
 
-            Thread.sleep(300);
+            try {
+                Thread.sleep(25);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             game.repaint();
             game.move();
@@ -76,12 +80,12 @@ public class Game extends JPanel{
     }
 
     private void move() {
+        cPlayer.move();
+
         movimiento();
     }
 
     public void movimiento(){
-
-        cPlayer.move();
 
         cMartillo.move();
         cDestornillador.move();

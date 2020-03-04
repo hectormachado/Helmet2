@@ -27,7 +27,8 @@ public class cPlayer implements Runnable {
         this.game = game;
     }
 
-    //limites de movimiento
+    Thread tp = new Thread();
+
     public void move() {
 
         if((POSICION_ANCHURA_X == 780)&&(cPuerta.abierta)){ //PUERTA ABIERTA
