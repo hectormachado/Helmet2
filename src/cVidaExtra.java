@@ -11,7 +11,6 @@ public class cVidaExtra extends cTools{
 
     public cVidaExtra(Game game) throws IOException {
         super(game);
-        ColumnaRandom();
     }
 
     //pintamos la rauqeta

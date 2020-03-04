@@ -63,13 +63,6 @@ public class cPlayer implements Runnable {
             xa = -130;
         if (e.getKeyCode() == KeyEvent.VK_RIGHT)
             xa = 130;
-        //MOVIMIENTO VERTICAL
-/*
-        if (e.getKeyCode() == KeyEvent.VK_UP)
-            ya = -3;
-        if (e.getKeyCode() == KeyEvent.VK_DOWN)
-            ya = 3;
-*/
     }
 
     public Rectangle getBounds(){
@@ -82,6 +75,7 @@ public class cPlayer implements Runnable {
 
     @Override
     public void run() {
+
         while(true)
         {
             move();

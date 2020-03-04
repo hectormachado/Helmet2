@@ -11,7 +11,6 @@ public class cDestornillador extends cTools{
 
     public cDestornillador(Game game) throws IOException {
         super(game);
-        ColumnaRandom();
     }
 
     //pintamos la rauqeta
