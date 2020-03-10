@@ -9,8 +9,10 @@ public class cMartillo extends cTools{
     // load source images
     BufferedImage martillo = ImageIO.read(new File("images/martillo.png"));
 
+    int posicionI = 130;
     public cMartillo(Game game) throws IOException {
         super(game);
+        POSICION_ANCHURA_X = posicionI;
     }
 
     //pintamos la rauqeta

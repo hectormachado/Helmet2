@@ -3,7 +3,7 @@ import java.io.IOException;
 
 abstract class cTools implements Runnable {
 
-    static int VELOCIDAD = 50;
+    static int VELOCIDAD = 1;
     static int SPRITE_ALTURA = 100;
     static int SPRITE_ANCHURA = 100;
     int POSICION_ALTURA_Y;
@@ -19,7 +19,7 @@ abstract class cTools implements Runnable {
 
     public void move() {
 
-        int AlturaRandom = (int) (Math.random() * 9 + 0);
+        int AlturaRandom = (int) (Math.random() * 11 + 0);
 
         if (POSICION_ALTURA_Y >= 500) {
 
@@ -60,7 +60,7 @@ abstract class cTools implements Runnable {
 
             if (POSICION_ALTURA_Y <= 0) {
 
-                int ColumnRandom = (int) (Math.random() * 4 + 0);
+                int ColumnRandom = (int) (Math.random() * 5 + 0);
 
                 switch (ColumnRandom) {
 

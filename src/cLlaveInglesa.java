@@ -8,9 +8,11 @@ public class cLlaveInglesa extends cTools{
 
     // load source images
     BufferedImage martillo = ImageIO.read(new File("images/llaveinglesa.png"));
+    int posicionI = 390;
 
     public cLlaveInglesa(Game game) throws IOException {
         super(game);
+        POSICION_ANCHURA_X = posicionI;
     }
 
     //pintamos la rauqeta

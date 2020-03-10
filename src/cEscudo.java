@@ -8,9 +8,11 @@ public class cEscudo extends cTools{
 
     // load source images
     BufferedImage martillo = ImageIO.read(new File("images/escudo.png"));
+    int posicionI = 650;
 
     public cEscudo(Game game) throws IOException {
         super(game);
+        POSICION_ANCHURA_X = posicionI;
     }
 
     //pintamos la rauqeta

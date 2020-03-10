@@ -5,11 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel{
+public class Game extends JPanel implements Runnable{
 
 
     public static int Puntos = 0;
@@ -47,14 +49,8 @@ public class Game extends JPanel{
 
         while (true){
 
-            try {
-                Thread.sleep(25);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             game.repaint();
-            game.move();
+            move();
 
         }
 
@@ -81,7 +77,6 @@ public class Game extends JPanel{
 
     private void move() {
         cPlayer.move();
-
         movimiento();
     }
 
@@ -115,5 +110,27 @@ public class Game extends JPanel{
         cEscudo.paint(g2d);
 
         cPuerta.avisoPuertaAbrierta(g2d);
+    }
+
+
+    @Override
+    public void run() {
+
+        Thread t1 = new Thread() {
+            public void run() {
+                cPlayer.move();
+            }
+        };
+
+        t1.start();
+
+        Thread t2 = new Thread() {
+            public void run() {
+                movimiento();
+            }
+        };
+
+        t2.start();
+
     }
 }

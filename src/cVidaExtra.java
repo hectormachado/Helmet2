@@ -8,9 +8,11 @@ public class cVidaExtra extends cTools{
 
     // load source images
     BufferedImage martillo = ImageIO.read(new File("images/vidaextra.png"));
+    int posicionI = 520;
 
     public cVidaExtra(Game game) throws IOException {
         super(game);
+        POSICION_ANCHURA_X = posicionI;
     }
 
     //pintamos la rauqeta

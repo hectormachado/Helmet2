@@ -9,8 +9,10 @@ public class cDestornillador extends cTools{
     // load source images
     BufferedImage martillo = ImageIO.read(new File("images/destornillador.png"));
 
+    int posicionI = 260;
     public cDestornillador(Game game) throws IOException {
         super(game);
+        POSICION_ANCHURA_X = posicionI;
     }
 
     //pintamos la rauqeta
