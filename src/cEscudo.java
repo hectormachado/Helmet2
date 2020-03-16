@@ -15,6 +15,11 @@ public class cEscudo extends cTools{
         POSICION_ANCHURA_X = posicionI;
     }
 
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle(POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA);
+    }
+
     //pintamos la rauqeta
     public void paint(Graphics2D g) {
         g.drawImage(martillo, POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA, null);
@@ -22,6 +27,12 @@ public class cEscudo extends cTools{
 
     @Override
     public void run() {
+
+        try {
+            move();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }

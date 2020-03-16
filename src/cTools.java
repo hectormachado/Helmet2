@@ -11,13 +11,15 @@ abstract class cTools implements Runnable {
 
     private Game game;
 
-    public cTools(Game game) throws IOException {
+    public cTools(Game game){
         this.game = game;
 
     }
 
 
-    public void move() {
+    public void move() throws InterruptedException {
+
+        Thread.sleep(1);
 
         int AlturaRandom = (int) (Math.random() * 11 + 0);
 
@@ -82,7 +84,13 @@ abstract class cTools implements Runnable {
                 }
             }
         }else {
+
             POSICION_ALTURA_Y = POSICION_ALTURA_Y + VELOCIDAD;
         }
     }
+
+    public Rectangle getBounds() {
+        return new Rectangle(POSICION_ANCHURA_X, POSICION_ALTURA_Y, SPRITE_ANCHURA, SPRITE_ALTURA);
+    }
 }
+

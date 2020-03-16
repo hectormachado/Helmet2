@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,15 +12,17 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements Runnable{
+public class Game extends JPanel{
 
 
-    public static int Puntos = 0;
+    public static int Puntos = 0, Vidas = 5, Partes = 5;
+
     BufferedImage backgroundImage = ImageIO.read(new File("images/fondo.jpg"));
 
     static JFrame frame;
     private static int ANCHURA = 1000;
     private static int ALTURA = 800;
+    private Thread t1, t2, t3;
 
     Graphics2D g2d;
 
@@ -41,16 +44,51 @@ public class Game extends JPanel implements Runnable{
         game.principal(game);
 
     }
-    public void principal(Game game){
+
+    public void principal(Game game) throws InterruptedException {
         frame.add(game);
         frame.setSize(ANCHURA, ALTURA);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        while (true){
+        t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
 
-            game.repaint();
-            move();
+                    try {
+                        movimiento();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+
+                    try {
+                        cPlayer.move();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
+        if (Vidas > 1){
+            t1.start();
+            t3.start();
+
+        }
+
+        while (Vidas > 0){
+
+            movimiento();
+            repaint();
 
         }
 
@@ -75,12 +113,8 @@ public class Game extends JPanel implements Runnable{
         setFocusable(true);
     }
 
-    private void move() {
-        cPlayer.move();
-        movimiento();
-    }
 
-    public void movimiento(){
+    public void movimiento() throws InterruptedException {
 
         cMartillo.move();
         cDestornillador.move();
@@ -89,6 +123,7 @@ public class Game extends JPanel implements Runnable{
         cEscudo.move();
 
     }
+
 
 
     @Override
@@ -100,6 +135,13 @@ public class Game extends JPanel implements Runnable{
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
         g2d.drawString("Puntos: "+ Puntos, 100, 20);
+        g2d.drawString("Vidas: "+ Vidas, 200, 20);
+        //g2d.drawString("Partes: "+ Partes, 300, 20);
+
+        if(Vidas < 1){
+            g2d.setFont(new Font("HAS PERDIDO!!", Font.PLAIN, 60));
+            g2d.drawString("HAS PERDIDO!!! ", 250, 250);
+        }
 
         cPlayer.paint(g2d);
 
@@ -112,25 +154,4 @@ public class Game extends JPanel implements Runnable{
         cPuerta.avisoPuertaAbrierta(g2d);
     }
 
-
-    @Override
-    public void run() {
-
-        Thread t1 = new Thread() {
-            public void run() {
-                cPlayer.move();
-            }
-        };
-
-        t1.start();
-
-        Thread t2 = new Thread() {
-            public void run() {
-                movimiento();
-            }
-        };
-
-        t2.start();
-
-    }
 }

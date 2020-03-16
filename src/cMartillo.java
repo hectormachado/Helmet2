@@ -23,5 +23,11 @@ public class cMartillo extends cTools{
     @Override
     public void run() {
 
+        try {
+            move();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
